@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Augenstern.bus.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    <!--@Table bus_customer-->
+    <id column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="custname" jdbcType="VARCHAR" property="custname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="career" jdbcType="VARCHAR" property="career" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `identity`, custname, sex, address, phone, career, createtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from bus_customer
+    where `identity` = #{identity,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from bus_customer
+    where `identity` = #{identity,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    insert into bus_customer (`identity`, custname, sex, 
+      address, phone, career, 
+      createtime)
+    values (#{identity,jdbcType=VARCHAR}, #{custname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{career,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    insert into bus_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="identity != null">
+        `identity`,
+      </if>
+      <if test="custname != null">
+        custname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="career != null">
+        career,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null">
+        #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    update bus_customer
+    <set>
+      <if test="custname != null">
+        custname = #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        career = #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where `identity` = #{identity,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    update bus_customer
+    set custname = #{custname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      career = #{career,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where `identity` = #{identity,jdbcType=VARCHAR}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update bus_customer
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="custname = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.custname,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="sex = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.sex,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.address,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.phone,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="career = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.career,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="createtime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.createtime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where `identity` in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.identity,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update bus_customer
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="custname = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.custname != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.custname,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sex = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.sex != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.sex,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.address != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.address,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.phone != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.phone,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="career = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.career != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.career,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="createtime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createtime != null">
+            when `identity` = #{item.identity,jdbcType=VARCHAR} then #{item.createtime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where `identity` in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.identity,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into bus_customer
+    (`identity`, custname, sex, address, phone, career, createtime)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.identity,jdbcType=VARCHAR}, #{item.custname,jdbcType=VARCHAR}, #{item.sex,jdbcType=INTEGER}, 
+        #{item.address,jdbcType=VARCHAR}, #{item.phone,jdbcType=VARCHAR}, #{item.career,jdbcType=VARCHAR}, 
+        #{item.createtime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    insert into bus_customer
+    (`identity`, custname, sex, address, phone, career, createtime)
+    values
+    (#{identity,jdbcType=VARCHAR}, #{custname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{career,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+    on duplicate key update 
+    `identity` = #{identity,jdbcType=VARCHAR}, 
+    custname = #{custname,jdbcType=VARCHAR}, 
+    sex = #{sex,jdbcType=INTEGER}, 
+    address = #{address,jdbcType=VARCHAR}, 
+    phone = #{phone,jdbcType=VARCHAR}, 
+    career = #{career,jdbcType=VARCHAR}, 
+    createtime = #{createtime,jdbcType=TIMESTAMP}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.Augenstern.bus.domain.Customer">
+    <!--@mbg.generated-->
+    insert into bus_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="identity != null">
+        `identity`,
+      </if>
+      <if test="custname != null">
+        custname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="career != null">
+        career,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null">
+        #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="identity != null">
+        `identity` = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null">
+        custname = #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="career != null">
+        career = #{career,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="queryAllCustomer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bus_customer
+    <where>
+      <if test="identity!=null and identity!=''">
+        and identity LIKE concat("%",#{identity},"%")
+      </if>
+      <if test="custname!=null and custname!=''">
+        and custname LIKE concat("%",#{custname},"%")
+      </if>
+      <if test="phone!=null and phone!=''">
+        and phone LIKE concat("%",#{phone},"%")
+      </if>
+      <if test="career!=null and career!=''">
+        and career LIKE concat("%",#{career},"%")
+      </if>
+      <if test="address!=null and address!=''">
+        and address LIKE concat("%",#{address},"%")
+      </if>
+      <if test="sex!=null">
+        and sex=#{sex}
+      </if>
+    </where>
+    order by createtime desc
+  </select>
+</mapper>
